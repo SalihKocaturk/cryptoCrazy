@@ -18,7 +18,7 @@ struct ContentView: View {
                 Text("secondaryTextColor").foregroundColor(Color.theme.SecondaryText)
                 
             }
-            .font(.headline)
+            .font(.headline).fontWeight(.heavy)
             
         }
         
