@@ -23,22 +23,26 @@ extension PreviewProvider {
 class DeveloperPreview{
     
     static let instance = DeveloperPreview()
-    private init(){}//so that we cannot use instance more than one time
-    
-    let coin = coinModel(
+    private init(){
+        
+        
+        
+    }//so that we cannot use instance more than one time
+    let homeVM = HomeViewModel()//homeviewmodelı burada tanımlıyoruz ki homeviewda tekrar kullanılabilsin
+    let coin = CoinModel(
         id:"bitcoin",
         symbol:"btc",
         name:"Bitcoin",
         image:"https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
-        currentPrice:35445,
-        marketCap:691914302199,
-        marketCapRank:1,
-        fullyDilutedValuation:743769904525,
-        totalVolume:15681131785,
-        high24H:35517,
-        low24H:34546,
-        priceChange24H:457.04,
-        priceChangePercentage24H:1.30625,
+        current_price:35445,
+        market_cap:691914302199,
+        market_cap_rank:1,
+        fully_diluted_valuation:743769904525,
+        total_volume:15681131785,
+        high_24h:35517,
+        low_24h:34546,
+        price_change_24h:457.04,
+        price_change_percentage_24h:1.30625,
         marketCapChange24H:9123567291,
         marketCapChangePercentage24H:1.33622,
         circulatingSupply:19535881.0,

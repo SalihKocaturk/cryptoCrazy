@@ -8,29 +8,66 @@
 import SwiftUI
 
 struct CoinRowView: View {
-    let coin:coinModel
+    let coin:CoinModel
+    let showHoldingsCalm: Bool
     var body: some View {
         HStack(spacing: 0){
-            Text("\(coin.rank)").font(.caption).foregroundColor(Color.theme.SecondaryText).frame(minWidth: 40)
-            
-            Circle()
-                .frame(width: 30, height: 30 )
-            Text(coin.symbol ?? "net").font(.headline).fontWeight(.heavy).padding(.leading , 6)
-                .foregroundColor(Color.theme.accent)
+            leftColumn
             Spacer()
-            VStack(alignment: .trailing){
-                Text("\(coin.currentPrice)")
-                
-                
-                Text((coin.priceChangePercentage24H ?? 0) >= 0 ?  " %\(coin.priceChangePercentage24H ?? 0)": " %\(coin.priceChangePercentage24H ?? 0)").font(.caption).foregroundColor((coin.priceChangePercentage24H ?? 0) >= 0 ?
-                Color.theme.green : Color.theme.red)
+            if showHoldingsCalm == true{
+                centerColumn
+            
             }
+            rightColumn
         }
+        .font(.subheadline)
+        
     }
 }
 
 struct CoinRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinRowView(coin: dev.coin)
+        Group{
+            CoinRowView(coin: dev.coin,showHoldingsCalm: true)
+                .previewLayout(.sizeThatFits)
+            CoinRowView(coin: dev.coin, showHoldingsCalm: true).previewLayout(.sizeThatFits).preferredColorScheme(.dark)
+        }
+    }
+    
+}
+extension CoinRowView{
+    private var leftColumn: some View{
+        HStack(spacing: 0) {
+            Text("\(coin.rank)").font(.caption).foregroundColor(Color.theme.SecondaryText).frame(minWidth: 40)
+            
+         CoinImageView(coin: coin)
+                .frame(width: 30, height: 30 )
+            Text(coin.symbol ?? "net").font(.headline).fontWeight(.heavy).padding(.leading , 6)
+                .foregroundColor(Color.theme.accent)
+            
+        }
+        
+    }
+    private var centerColumn: some View{
+        VStack{
+            
+            Text(coin.currentHoldingsValue.asCurrencyWith6())
+            Text((coin.currentHoldings ?? 0).asNumberString())
+        }.foregroundColor(Color.theme.accent )
+        
+        
+        
+    }
+    private var rightColumn: some View{
+        
+        VStack(alignment: .trailing){
+            Text(coin.current_price.asCurrencyWith6())
+            
+            
+            Text((coin.price_change_percentage_24h?.asPercentString() ?? "" ) ).font(.caption).foregroundColor((coin.price_change_percentage_24h ?? 0) >= 0 ?
+                                                                                                            Color.theme.green : Color.theme.red)
+        }
+        .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
+        
     }
 }

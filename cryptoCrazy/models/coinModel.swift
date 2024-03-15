@@ -15,13 +15,14 @@ import Foundation
 
 
 // MARK: - Welcome
-struct coinModel: Identifiable, Codable {
-    let id, symbol, name: String?
-    let image: String?
-    let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation: Double?
-    let totalVolume, high24H, low24H: Double?
-    let priceChange24H, priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H: Double?
+struct CoinModel: Identifiable, Codable {
+    let id, symbol, name: String
+    let image: String
+    let current_price: Double
+          
+    let market_cap, market_cap_rank, fully_diluted_valuation: Double?
+    let total_volume, high_24h, low_24h: Double?
+    let price_change_24h, price_change_percentage_24h, marketCapChange24H, marketCapChangePercentage24H: Double?
     let circulatingSupply, totalSupply, maxSupply, ath: Double?
     let athChangePercentage: Double?
     let athDate: String?
@@ -29,20 +30,20 @@ struct coinModel: Identifiable, Codable {
     let atlDate: String?
     
     let lastUpdated: String?
-    let sparklineIn7D: SparklineIn7D
+    let sparklineIn7D: SparklineIn7D!
     let priceChangePercentage24HInCurrency: Double?
     let currentHoldings: Double?
     enum codingKeys: String, CodingKey{
         case id, symbol, name, image
-        case currentPrice = "current_price"
-        case marketCap = "market_cap"
-        case marketCapRank = "market_cap_rank"
-        case fullyDilutedValuation = "fully_diluted_valuation"
-        case totalVolume = "total_volume"
-        case high24H = "high_24h"
-        case low24H = "low_24h"
-        case priceChange24H = "price_change_24h"
-               case priceChangePercentage24H = "price_change_percentage_24h"
+        case current_price = "current_price"
+        case market_cap = "market_cap"
+        case market_cap_rank = "market_cap_rank"
+        case fully_diluted_valuation = "fully_diluted_valuation"
+        case total_volume = "total_volume"
+        case high_24h = "high_24h"
+        case low_24h = "low_24h"
+        case price_change_24h = "price_change_24h"
+               case price_change_percentage_24h = "price_change_percentage_24h"
         case marketCapChange24H = "market_cap_change_24h"
         case marketCapChangePercentage24H = "market_cap_change_percentage_24h"
         case circulatingSupply = "circulating_supply"
@@ -60,17 +61,18 @@ struct coinModel: Identifiable, Codable {
                 case priceChangePercentage24HInCurrency = "price_change_percentage_24h_in_currency"
               case currentHoldings
     }
-    func updateHoldings(amount: Double) -> coinModel{
-        return(coinModel(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCap: marketCap, marketCapRank: marketCapRank, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, currentHoldings: currentHoldings))
+     
+    func updateHoldings(amount: Double) -> CoinModel{
+         return(CoinModel(id: id, symbol: symbol, name: name, image: image, current_price: current_price, market_cap: market_cap, market_cap_rank: market_cap_rank, fully_diluted_valuation: fully_diluted_valuation, total_volume: total_volume, high_24h: high_24h, low_24h: low_24h, price_change_24h: price_change_24h, price_change_percentage_24h: price_change_percentage_24h, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, currentHoldings: currentHoldings))
         
     }
     var currentHoldingsValue: Double{
-        return (currentHoldings ?? 0) * currentPrice
+        return (currentHoldings ?? 0) * current_price
         
     }
     var rank: Int {
         
-        return Int(marketCapRank ?? 0)
+        return Int(market_cap_rank ?? 0)
         
     }
 }
