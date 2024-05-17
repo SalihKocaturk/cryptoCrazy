@@ -12,7 +12,7 @@ This project is a simple cryptocurrency tracking application developed using Swi
 - SwiftUI: SwiftUI is used for building the user interface of the application. It provides a modern and declarative approach to UI development.
 - MVVM Architecture: The application is structured based on the Model-View-ViewModel architectural pattern. This promotes separation of concerns and enhances maintainability.
 - JSON API: The application fetches cryptocurrency data from a JSON API, ensuring that users receive up-to-date information.
-
+- Combine Framework: The Combine framework, introduced by Apple, is a powerful tool for managing asynchronous events and data streams in Swift applications. It provides a declarative Swift API for processing values over time, which is particularly useful in modern iOS development.
 
 ## Acknowledgements
 - This project utilizes data from [CoinGecko] API. 
