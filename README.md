@@ -4,6 +4,7 @@
 This project is a simple cryptocurrency tracking application developed using SwiftUI, MVVM architecture, and JSON API. It allows users to view real-time information about various cryptocurrencies.
 
 ## Features
+![image](https://github.com/SalihKocaturk/cryptoCrazy/assets/139994163/7d105b36-18f2-489d-a908-bbf96b6e24bc)
 - View a list of cryptocurrencies.
 - See details of each cryptocurrency including its name, symbol, current price, market cap, and 24-hour change percentage.
 - Pull-to-refresh functionality to update cryptocurrency data.
@@ -21,4 +22,5 @@ This project is a simple cryptocurrency tracking application developed using Swi
 For any inquiries or feedback, please contact [Ahmet Salih Kocatürk] at [kocaturksalih8@gmail.com].
 
 ## You can find the images of the app from ReadmeImages Folder
+![image](https://github.com/SalihKocaturk/cryptoCrazy/assets/139994163/c6d14d67-2ca3-4d7e-9653-1f42cbc0f254)
 
